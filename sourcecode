@@ -1,0 +1,35 @@
+#! python3
+#This is a program to calculate payroll expenses.
+
+employees = ['Oscar', 'Judy', 'Sandra', 'Tino', 'Andres', 'Rich', 'Matt', 'Daniel', 'Elena']
+employeeHourlyPay = [14.5, 14.5, 13.5, 13.0, 13.0, 11.0, 11.0, 10.0, 10.0]
+employeeHours = []
+totalPay = []
+#Iterate through employees and ask for hours worked. Program will check for
+#valid digit inputs, and prompt you to only enter digits when anything else
+#is entered as input.
+
+for i in employees:
+    while True:
+        print('Enter hours for', i , ':')
+        try:
+            x = float(input())
+            employeeHours.append(x)
+            break
+        except ValueError:
+            print('Please use numbers or decimals only.')
+            continue
+            
+#Calculate pay per employee and add to list.
+for i, j in zip(employeeHourlyPay, employeeHours):
+    totalPay.append(i * float(j))
+
+#Display pay per employee by iterating through employees and totalPay.
+for i, j in zip(employees, totalPay):
+    print(i + "'s pay is", str(j))
+    
+
+#Calculate and display total payroll by summing items in totalPay.
+print('Total Payroll: ' + str(sum(totalPay)))
+
+
